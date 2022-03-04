@@ -441,6 +441,7 @@ public class ScheduledMessageConsumer {
       // 实例化消费者
       DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("ExampleConsumer");
       // 订阅Topics
+      consumer.setNamesrvAddr("127.0.0.1:9876");
       consumer.subscribe("TestTopic", "*");
       // 注册消息监听者
       consumer.registerMessageListener(new MessageListenerConcurrently() {
@@ -472,6 +473,7 @@ public class ScheduledMessageProducer {
       // 实例化一个生产者来产生延时消息
       DefaultMQProducer producer = new DefaultMQProducer("ExampleProducerGroup");
       // 启动生产者
+      producer.setNamesrvAddr("localhost:9876");
       producer.start();
       int totalMessagesToSend = 100;
       for (int i = 0; i < totalMessagesToSend; i++) {
